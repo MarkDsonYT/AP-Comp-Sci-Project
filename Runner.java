@@ -88,12 +88,19 @@ public class Runner{
      int  answerType = k.nextInt();
      System.out.println("How many rounds would you like to do?");
      int answerRound = k.nextInt();
-     //I will put a small code here
+       for(int i = 0; i<answerRound; i++){
+     Spinner c = new Spinner(answerType);
+     }
+     System.out.println("Loses: "+Spinner.loses+"\nWins: "+Spinner.wins);
       
     } else if(type==2){ //This is if they want to test out the probaility for a random special spin
-
-    //I will also put code here.
-
+    System.out.println("\nHow many rounds do you want to play?");
+    int answerRound = k.nextInt();
+        for(int i = 0; i<answerRound; i++){
+      int selection = (int)Math.random()*4+1;
+    Spinner d = new Spinner(selection);
+    }
+    
     }  
      else if(type==3){
     
