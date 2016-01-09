@@ -35,6 +35,12 @@ public class Spinner{
     }
    }
 
+   public Spinner(int specificSpinType){  //This is for probability measuring for a specific special spin.
+   specificSpinType++;
+   win = specialSpinner(specificSpinType);
+   
+   }
+
   public int payout(){   //if they win, then here's their reward
     if(spinType==1){
     return bet*2;   //normal bet
