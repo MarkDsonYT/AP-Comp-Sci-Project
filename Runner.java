@@ -32,7 +32,7 @@ public class Runner{
   private static int players = 0;
   private static int rounds = 0;
   private static int bet;
-
+ 
   private static String[] playerSet;
   private static int[] playerMoney;
   private static int reset;
@@ -72,8 +72,10 @@ public class Runner{
     System.out.println("The chance of winning for a Double Doubler is 1/18\nThe chance of winning for a Rogue bet is 17/240\nThe chance of winning for a Triple Tripler is 1/36");
     System.out.println("A player can only bet 10,20,30,40,or 50 dollars. If you lose on the spinner, you lose the ammount of money you bet.\n");
     
+    do{
     int type;  
     int check = 0;
+    
     do{             //Asks whether to do probability (random or specific), or to play for fun.
       if(check>0){
       System.out.println("Please only type in 1, 2, or 3");   
@@ -88,27 +90,29 @@ public class Runner{
      int  answerType = k.nextInt();
      System.out.println("How many rounds would you like to do?");
      int answerRound = k.nextInt();
-       for(int i = 0; i<answerRound; i++){
+     for(int i = 0; i<answerRound; i++){
      Spinner c = new Spinner(answerType);
      }
      System.out.println("Loses: "+Spinner.loses+"\nWins: "+Spinner.wins);
-      System.out.println("Do you want to play again? Press 1 for yes.");
+     System.out.println("Do you want to play again? Press 1 for yes.");
     reset = k.nextInt();
-      
-    } else if(type==2){ //This is if they want to test out the probaility for a random special spin
-    System.out.println("\nHow many rounds do you want to play?");
+    
+     
+    } else if(type==2){   //This is if they want to test out the probability for a random selection.
+     System.out.println("\nHow many rounds do you want to play?");
     int answerRound = k.nextInt();
-        for(int i = 0; i<answerRound; i++){
+
+    for(int i = 0; i<answerRound; i++){
       int selection = (int)Math.random()*4+1;
     Spinner d = new Spinner(selection);
     }
     System.out.println("Do you want to play again? Press 1 for yes.");
     reset = k.nextInt();
     
-    }  
-     else if(type==3){
+    } 
     
-    do{  //This is if they want to PLAY the game
+     else if(type==3){
+      //This is if they want to PLAY the game
     System.out.println("\nLet's play! Enter the number of players :: ");    //For recreational purposes
     players = k.nextInt();
     playerSet = new String[players];  //Makes an array of the players' names
@@ -133,15 +137,15 @@ public class Runner{
     }/***/
   }
 
-    for(int t=0; t<players; t++){
+    for(int t=0; t<players; t++){  //If it's in game mode (3), then it will say which player won the most money
     System.out.println(playerSet[t]+" has "+playerMoney[t]+" dollars");
     }
     System.out.println("Do you want to play again? Press 1 for yes.");
     reset = k.nextInt();
-  }while(reset==1);
+  }
   
-    }
-  
+    
+     }while(reset==1);
   }
   
 }
