@@ -92,6 +92,8 @@ public class Runner{
      Spinner c = new Spinner(answerType);
      }
      System.out.println("Loses: "+Spinner.loses+"\nWins: "+Spinner.wins);
+      System.out.println("Do you want to play again? Press 1 for yes.");
+    reset = k.nextInt();
       
     } else if(type==2){ //This is if they want to test out the probaility for a random special spin
     System.out.println("\nHow many rounds do you want to play?");
@@ -100,6 +102,8 @@ public class Runner{
       int selection = (int)Math.random()*4+1;
     Spinner d = new Spinner(selection);
     }
+    System.out.println("Do you want to play again? Press 1 for yes.");
+    reset = k.nextInt();
     
     }  
      else if(type==3){
