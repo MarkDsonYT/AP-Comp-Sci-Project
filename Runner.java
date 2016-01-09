@@ -106,7 +106,8 @@ public class Runner{
       int selection = (int)Math.random()*4+1;
     Spinner d = new Spinner(selection);
     }
-    System.out.println("Do you want to play again? Press 1 for yes.");
+     System.out.println("Normal Spin Wins: "+Spinner.normal+"\nRogue Spin Wins: "+Spinner.rogue+"\nDouble Doubler Yellow Spin Wins: "+Spinner.doubleYellow+"\nDouble Doubler Brown Spin Wins: "+Spinner.doubleBrown+"\nTriple Tripler Spin Wins: "+Spinner.tripleTripler);
+    System.out.println("\nDo you want to play again? Press 1 for yes.");
     reset = k.nextInt();
     
     } 
