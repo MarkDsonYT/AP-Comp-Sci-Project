@@ -33,8 +33,6 @@ public class Spinner{
       System.out.println("You lost "+bet+" dollars!\n");
       statbuck = -1 * bet;
     }
-
-    
    }
 
   public int payout(){   //if they win, then here's their reward
