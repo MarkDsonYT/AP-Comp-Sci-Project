@@ -12,7 +12,8 @@ public class Spinner{
   private static boolean win;
   private static String[] playerSet;
   private static int[] playerMoney;
-  
+  public static int wins = 0;
+  public static int loses = 0;
   
    Scanner k = new Scanner(System.in);
 
@@ -38,7 +39,11 @@ public class Spinner{
    public Spinner(int specificSpinType){  //This is for probability measuring for a specific special spin.
    specificSpinType++;
    win = specialSpinner(specificSpinType);
-   
+   if(win){
+   wins++;
+   }else{
+   loses++;
+   }
    }
 
   public int payout(){   //if they win, then here's their reward
