@@ -4,3 +4,5 @@ You should be able to edit my code, if you click on Runner.java or Spinner.java,
 
 Change the System.out.println and also the Scanners to GUI. 
 Use this: https://uaschools.schoology.com/course/310190002/materials/gp/464029101
+
+To copy and paste the Runner.java or Spinner.java, you can press the RAW button 
