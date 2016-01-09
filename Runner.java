@@ -88,64 +88,12 @@ public class Runner{
      int  answerType = k.nextInt();
      System.out.println("How many rounds would you like to do?");
      int answerRound = k.nextInt();
-      /*
-         
-  public boolean specialSpinner(int a){    //special spin    
-    if(a==2){     //rogue bet, 17/240 chance  (0.07)
-      if(Math.random()*240 < 17){      // Since Math.random() is 0-0.9999, I made the symbol < instead of <= 
-      return true;
-      } else {
-      return false;
-      }
-    } else if(a==3||a==4){   //double doubler bet, 1/18 chance  (0.05)
-      if(Math.random()*18 < 1){
-      return true;
-      } else {
-      return false;
-      } 
-    } else if(a==5){   //triple tripler  (0.02)
-      if(Math.random()*36 < 1){
-      return true;
-      } else {
-      return false;
-      }
-    }  
-    return false;
-  }  
-  
-  */
+     //I will put a small code here
       
-    } else if(type==2){
+    } else if(type==2){ //This is if they want to test out the probaility for a random special spin
 
-      
-      /*
-       
-         public boolean specialSpinner(int a){    //special spin    
-    if(a==2){     //rogue bet, 17/240 chance  (0.07)
-      if(Math.random()*240 < 17){      // Since Math.random() is 0-0.9999, I made the symbol < instead of <= 
-      return true;
-      } else {
-      return false;
-      }
-    } else if(a==3||a==4){   //double doubler bet, 1/18 chance  (0.05)
-      if(Math.random()*18 < 1){
-      return true;
-      } else {
-      return false;
-      } 
-    } else if(a==5){   //triple tripler  (0.02)
-      if(Math.random()*36 < 1){
-      return true;
-      } else {
-      return false;
-      }
-    }  
-    return false;
-  }  
-       
-       */
-      
-      
+    //I will also put code here.
+
     }  
      else if(type==3){
     
