@@ -1,155 +1,195 @@
 //Michael Chen
 //Bill Kong
 
+
+/*
+ * Michael: We emailed already, I think Bill will have an alternative assignment.
+ * Every method is written by Michael. (so I don't have to put Michael under every method)
+ */
+
 import java.util.Scanner;
+import javax.swing.*;
 
+public class Spinner {
+ public static int statbuck = 0;         //Money gained/lost    
+ private static int bet;                 //Bet Ammount
+ private static int spinType;            //Spin Type
+ private static boolean win;             //If they win or not
+ public static int wins = 0;             //Number of Wins
+ public static int loses = 0;            //Numer of Loses
+ public static int normal = 0, rogue = 0, doubleYellow = 0, doubleBrown = 0, tripleTripler = 0;       //Number of wins for probability of random selections
+ public static int Lnormal = 0, Lrogue = 0, LdoubleYellow = 0, LdoubleBrown = 0, LtripleTripler = 0;  //Number of loses for probability of random selections
+ JFrame frame = new JFrame("Input Dialog");
 
-public class Runner{
-  Scanner k = new Scanner(System.in);
-  /*
-   *  
-   * 
-   * Bet 10-50 dollars, 
-   * 
-   * Normal Spin: 2x
-   * 
-   * Special Spins:
-   * Double Doubler Yellow/Brown: 17x
-   * Triple Tripler: 35x
-   * Rogue Bet: 14x
-   * 
-   * Chance of Winning: 
-   * Double Doubler Yellow/Brown: 1/18
-   * Rogue: 17/240
-   * Triple Tripler: 1/36
-   * Normal : 1/2
-   * 
-   * 
-   * I don't know if the players have starting money, so I'd just tell them how much money they win/lose
-   */
-  public static int statbuck = 0;             
+ public Spinner() {
+  setBet(); //asks for bet ammount
+  setSpinType(); //asks for normal or special spin
 
-  private static int players = 0;
-  private static int rounds = 0;
-  private static int bet;
- 
-  private static String[] playerSet;
-  private static int[] playerMoney;
-  private static int reset;
-  
-  public Runner(){
+  if (spinType == 1) { //does the spinning
+   win = regularSpinner();
+  } else {
+   win = specialSpinner(spinType);
   }
 
-
-  public static void checkBet(int a){      //check if the bet is okay
-        if(!(bet==10||bet==20||bet==30||bet==40||bet==50)){
-         System.out.println("Please only type in 10,20,30,40, or 50.\n");
-         setBet();
-      }
+  if (win) { //checks if they won or not
+   JOptionPane.showMessageDialog(frame, "You won " + payout() + " dollars!\n");
+   statbuck = payout();
+  } else {
+   JOptionPane.showMessageDialog(frame, "You lost " + bet + " dollars!\n");
+   statbuck = -1 * bet;
   }
- 
-  
+ }
 
-    public static void setBet(){        //sets the bet
-      Scanner k = new Scanner(System.in);
-      System.out.println("How much do you want to bet?");
-      bet = k.nextInt();
-      checkBet(bet);   
-    }
-    
-    public static int checkType(){
-      Scanner k = new Scanner(System.in);
-      System.out.println("If you want to test out your probability for a specific type of special spin, type 1\nif you want to test out your probability for each special spin, type 2\nIf you just want to play the game, type 3\n ");
-      return k.nextInt();
-    }
-    
-  public static void main(String[] args){
-    Scanner k = new Scanner(System.in);
-    
-    //This just explains how the game works.
-    System.out.println("Welcome! Get ready to play a game with a Spinner! Here's how to play::\nYou can decide either to make a Normal Spin, or a Special Spin.\nFor a normal spin, you a 2:1 payout if you win. \nFor a special spin, you can decide either to do a Rogue Spin, a Double Doubler, or Triple Tripler");
-    System.out.println("A Rogue Spin will give you a 14:1 payout\nA Double Doubler will give you a 17:1 payout\nA Triple Tripler will give you a 34:1 payout.\nThe chance of winning for a normal spin is 1/2");
-    System.out.println("The chance of winning for a Double Doubler is 1/18\nThe chance of winning for a Rogue bet is 17/240\nThe chance of winning for a Triple Tripler is 1/36");
-    System.out.println("A player can only bet 10,20,30,40,or 50 dollars. If you lose on the spinner, you lose the ammount of money you bet.\n");
-    
-    do{
-    int type;  
-    int check = 0;
-    
-    do{             //Asks whether to do probability (random or specific), or to play for fun.
-      if(check>0){
-      System.out.println("Please only type in 1, 2, or 3");   
-      }
-    type = checkType();
-     check++;
-    }while(!(type==1||type==2||type==3));
-    
-    
-    if(type==1){  //This is if they want to test out the probability for a specific type of special spin
-     System.out.println("\nWhat kind of spin do you want to do?\nType 1 for a rogue spin\nType 2 for a Double Doubler Yellow\nType 3 for a Double Doubler Brown\nType 4 for a Triple Tripler");
-     int  answerType = k.nextInt();
-     System.out.println("How many rounds would you like to do?");
-     int answerRound = k.nextInt();
-     for(int i = 0; i<answerRound; i++){
-     Spinner c = new Spinner(answerType);
-     }
-     System.out.println("Loses: "+Spinner.loses+"\nWins: "+Spinner.wins);
-     System.out.println("Do you want to play again? Press 1 for yes.");
-    reset = k.nextInt();
-    Spinner.wins = 0;
-    Spinner.loses = 0;
-     
-    } else if(type==2){   //This is if they want to test out the probability for a random selection.
-     System.out.println("\nHow many rounds do you want to play?");
-     int answerRound = k.nextInt();
-
-    for(int i = 0; i<answerRound; i++){  //random spintype selector
-      int selection = (int)Math.round(Math.random()*4);
-    Spinner d = new Spinner(selection,0);
-    }
-    System.out.println("Normal Spin Wins: "+Spinner.normal+"\nRogue Spin Wins: "+Spinner.rogue+"\nDouble Doubler Yellow Spin Wins: "+Spinner.doubleYellow+"\nDouble Doubler Brown Spin Wins: "+Spinner.doubleBrown+"\nTriple Tripler Spin Wins: "+Spinner.tripleTripler);
-    
-    System.out.println("\nDo you want to play again? Press 1 for yes.");
-    reset = k.nextInt();
-    Spinner.wins=0;
-    Spinner.loses=0;
-    } 
-    
-     else if(type==3){
-      //This is if they want to PLAY the game
-    System.out.println("\nLet's play! Enter the number of players :: ");    //For recreational purposes
-    players = k.nextInt();
-    playerSet = new String[players];  //Makes an array of the players' names
-    playerMoney = new int[players];   //The total money loss/gain for each player
-   
-    String useless = k.nextLine();  //I don't know why but the first .nextLine() doens't work intially, so if you delete this, then you can't put in player 1's name.
-    for(int i = 1; i<=players; i++){     //Sets the names of the players
-      System.out.println("Enter player "+i+"'s name:: ");
-      playerSet[i-1] = k.nextLine();
-    }
-
-    System.out.println("How many rounds do you want to play?");        //number of rounds for each player, 
-    rounds = k.nextInt();
-    
-    for(int i=0; i<players; i++){     //this loop starts the game for each player
-      System.out.println(playerSet[i]+"'s turn.");    
-      
-    /***/for(int j = 1; j <= rounds; j++){   //this loop is for each round
-      System.out.println("Round "+j+" :: ");
-      Spinner b = new Spinner();  
-      playerMoney[i] += Spinner.statbuck;  //adds up the money lost/gained from the round into the player's account
-    }/***/
+ public Spinner(int specificSpinType) { //This is for probability measuring for a specific special spin.
+  specificSpinType++;
+  win = specialSpinner(specificSpinType);
+  System.out.print("Spin Type: ");
+  if (spinType == 1) {              //This is just to print out the process in the console
+   System.out.print("Normal ");
+  } else if (spinType == 2) {
+   System.out.print("Rogue ");
+  } else if (spinType == 3) {
+   System.out.print("Double Doubler Brown ");
+  } else if (spinType == 4) {
+   System.out.print("Double Doubler Yellow ");
+  } else {
+   System.out.print("Triple Tripler ");
   }
 
-    for(int t=0; t<players; t++){  //If it's in game mode (3), then it will say which player won the most money
-    System.out.println(playerSet[t]+" has "+playerMoney[t]+" dollars");
-    }
-    System.out.println("Do you want to play again? Press 1 for yes.");
-    reset = k.nextInt();
+  if (win) {     //If they win, then the win counter goes up, if they lose, then the lose counter goes up.
+   wins++;
+   System.out.println("Won");
+  } else {
+   loses++;
+   System.out.println("Lost");
   }
-  
-    
-     }while(reset==1);
+ }
+
+ public Spinner(int specificSpinType, int nothing) { //This is for probability measuring for random special spin
+  specificSpinType++;
+  System.out.print("Spin Type: ");
+  if (specificSpinType > 1) {
+   win = specialSpinner(specificSpinType);
+  } else {
+   win = regularSpinner();
   }
-  
+
+  if (specificSpinType == 1) {         //This is just to print out the process in the console
+   System.out.print("Normal ");
+   if (win) {
+    normal++;
+    System.out.println("Won");
+   } else {
+    Lnormal++;
+    System.out.println("Lost");
+   }
+  } else if (specificSpinType == 2) {
+   System.out.print("Rogue ");
+   if (win) {
+    rogue++;
+    System.out.println("Won");
+   } else {
+    Lrogue++;
+    System.out.println("Lost");
+   }
+  } else if (specificSpinType == 3) {
+   System.out.print("Double Doubler Brown ");
+   if (win) {
+    doubleYellow++;
+    System.out.println("Won");
+   } else {
+    LdoubleYellow++;
+    System.out.println("Lost");
+   }
+  } else if (specificSpinType == 4) {
+   System.out.print("Double Doubler Yellow ");
+   if (win) {
+    doubleBrown++;
+    System.out.println("Won");
+   } else {
+    LdoubleBrown++;
+    System.out.println("Lost");
+   }
+  } else if (specificSpinType == 5) {
+   System.out.print("Triple Tripler ");
+   if (win) {
+    tripleTripler++;
+    System.out.println("Won");
+   } else {
+    LtripleTripler++;
+    System.out.println("Lost");
+   }
+  }
+ }
+
+ public int payout() { //if they win, then here's their reward
+  if (spinType == 1) {
+   return bet * 2; //normal bet
+  } else if (spinType == 2) {
+   return bet * 14; //rogue bet
+  } else if (spinType == 3 || spinType == 4) {
+   return bet * 17; //double doubler
+  } else {
+   return bet * 34; //triple tripler
+  }
+ }
+
+
+ public void setSpinType() { //normal or special spin
+  JFrame frame = new JFrame("Input Dialog");
+  int a = Integer.parseInt(JOptionPane.showInputDialog(frame, "What kind of spin do you want to do? Type 1 for normal spin, 2 for rogue bet, 3 for double doubler yellow, 4 for double doubler brown or 5 for triple tripler"));
+  if (!(a == 1 || a == 2 || a == 3 || a == 4 || a == 5)) {
+   JOptionPane.showMessageDialog(frame, "Please only type in 1,2,3,4, or 5\n");
+   setSpinType();
+  } else {
+   spinType = a;
+  }
+ }
+
+
+ public static void checkBet(int a) { //check if the bet is okay
+  JFrame frame = new JFrame("Input Dialog");
+  if (!(bet == 10 || bet == 20 || bet == 30 || bet == 40 || bet == 50)) {
+   JOptionPane.showMessageDialog(frame, "Please only type in 10,20,30,40, or 50.\n");
+   setBet();
+  }
+ }
+
+
+ public boolean specialSpinner(int a) { //special spin    
+  if (a == 2) { //rogue bet, 17/240 chance  (0.07)
+   if (Math.random() * 240 < 17) { // Since Math.random() is 0-0.9999, I made the symbol < instead of <= 
+    return true;
+   } else {
+    return false;
+   }
+  } else if (a == 3 || a == 4) { //double doubler bet, 1/18 chance  (0.05)
+   if (Math.random() * 18 < 1) {
+    return true;
+   } else {
+    return false;
+   }
+  } else if (a == 5) { //triple tripler  (0.02)
+   if (Math.random() * 36 < 1) {
+    return true;
+   } else {
+    return false;
+   }
+  }
+  return false;
+ }
+
+ public boolean regularSpinner() { //normal spin (0.5)
+  if (Math.random() * 2 < 1) {
+   return true;
+  } else {
+   return false;
+  }
+ }
+
+ public static void setBet() { //sets the bet
+  JFrame frame = new JFrame("Input Dialog");
+  bet = Integer.parseInt(JOptionPane.showInputDialog(frame, "How much do you want to bet?"));
+  checkBet(bet); //checks if the bet is okay
+ }
 }
