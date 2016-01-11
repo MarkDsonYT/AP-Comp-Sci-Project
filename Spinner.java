@@ -15,7 +15,6 @@ public class Spinner{
   public static int wins = 0;
   public static int loses = 0;
   public static int normal = 0, rogue = 0, doubleYellow = 0, doubleBrown = 0, tripleTripler = 0;
-  
    Scanner k = new Scanner(System.in);
 
    public Spinner(){
@@ -46,10 +45,16 @@ public class Spinner{
    loses++;
    }
    }
-
+   
    public Spinner(int specificSpinType, int nothing){//This is for probability measuring for random special spin
-    win = specialSpinner(specificSpinType);
-    if(specificSpinType==1){
+     specificSpinType++;
+     if(specificSpinType>1){
+     win = specialSpinner(specificSpinType);
+     } else {
+     win = regularSpinner();
+     }
+     
+     if(specificSpinType==1){
       if(win){
       normal++;
       }
@@ -71,7 +76,7 @@ public class Spinner{
       }
     }
    }
-
+   
   public int payout(){   //if they win, then here's their reward
     if(spinType==1){
     return bet*2;   //normal bet
