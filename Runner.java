@@ -96,18 +96,19 @@ public class Runner{
      System.out.println("Loses: "+Spinner.loses+"\nWins: "+Spinner.wins);
      System.out.println("Do you want to play again? Press 1 for yes.");
     reset = k.nextInt();
-    Spinner.wins=0;
-    Spinner.loses=0;
+    Spinner.wins = 0;
+    Spinner.loses = 0;
      
     } else if(type==2){   //This is if they want to test out the probability for a random selection.
      System.out.println("\nHow many rounds do you want to play?");
-    int answerRound = k.nextInt();
+     int answerRound = k.nextInt();
 
-    for(int i = 0; i<answerRound; i++){
-      int selection = (int)Math.random()*4+1;
-    Spinner d = new Spinner(selection);
+    for(int i = 0; i<answerRound; i++){  //random spintype selector
+      int selection = (int)Math.round(Math.random()*4);
+    Spinner d = new Spinner(selection,0);
     }
-     System.out.println("Normal Spin Wins: "+Spinner.normal+"\nRogue Spin Wins: "+Spinner.rogue+"\nDouble Doubler Yellow Spin Wins: "+Spinner.doubleYellow+"\nDouble Doubler Brown Spin Wins: "+Spinner.doubleBrown+"\nTriple Tripler Spin Wins: "+Spinner.tripleTripler);
+    System.out.println("Normal Spin Wins: "+Spinner.normal+"\nRogue Spin Wins: "+Spinner.rogue+"\nDouble Doubler Yellow Spin Wins: "+Spinner.doubleYellow+"\nDouble Doubler Brown Spin Wins: "+Spinner.doubleBrown+"\nTriple Tripler Spin Wins: "+Spinner.tripleTripler);
+    
     System.out.println("\nDo you want to play again? Press 1 for yes.");
     reset = k.nextInt();
     Spinner.wins=0;
