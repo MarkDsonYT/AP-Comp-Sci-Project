@@ -2,11 +2,6 @@
 //Bill Kong
 
 
-/*
- * Michael: We emailed already, I think Bill will have an alternative assignment.
- * Every method is written by Michael. (so I don't have to put Michael under every method)
- */
-
 import java.util.Scanner;
 import javax.swing.*;
 
