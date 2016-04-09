@@ -12,3 +12,4 @@ Status: [  Pending  ] 4. Complete the lab report. Include graphs (with excel).
 
 ______________________________________________
 
+Experimental Data: https://docs.google.com/spreadsheets/d/1vYQarsKURVsKMu9LblHVRUMGm2Qnk8NGpiK2CqUP9sU/edit#gid=0
