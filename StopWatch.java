@@ -101,23 +101,6 @@ public class StopWatch {
   System.out.println("Bubble Average = " + (double) count3 / trials);
   System.out.println();
 
-  //QUICK SORT
-  long count4 = 0;
-  myWatch.reset();
-  for (int i = 1; i < trials; i++) {
-   myWatch.reset();
-   int[] arr4 = MakeArray.randomArr(size);
-   int back = arr4.length - 1;
-   myWatch.start();
-   QuickSort.quickSort(arr4, 0, back);
-   myWatch.stop();
-   long time4 = myWatch.getElapsedTime();
-   count4 += time4;
-  }
-  System.out.println("Quick Total Time: " + count4);
-  System.out.println("Quick Average = " + (double) count4 / trials);
-  System.out.println();
-
   //SELECTION SORT
   myWatch.reset();
   long count5 = 0;
@@ -169,6 +152,7 @@ public class StopWatch {
   System.out.println("Binary Total Time: " + count7);
   System.out.println("Binary Search Average = " + (double) count7 / trials);
   System.out.println();
+	 
   keys.close();
  }
 }
