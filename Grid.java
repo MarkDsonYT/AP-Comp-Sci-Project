@@ -10,10 +10,10 @@ public class Grid{
   
   private String grid[][];  //Grid
   private int generation; //Generation number
-  private static ArrayList<Integer> neighbors;
+//  private static ArrayList<Integer> neighbors;
   
   public Grid(){ //Make new empty Grid
-    neighbors = new ArrayList<Integer>(0);
+   // neighbors = new ArrayList<Integer>(0);
     generation = 1;
     grid = new String[20][20];
     for(int r = 0; r<grid.length;r++){
@@ -52,7 +52,7 @@ public class Grid{
          }
        }else{  //if cell is empty
          int count = getNeighbors(r,c);
-         neighbors.add(count);
+      //   neighbors.add(count);
     //     if(r==1&&c==5)System.out.println(count);
          if(count==3){
            temp[r][c]=" X"; //cell is alive if there are 3 neighbors
