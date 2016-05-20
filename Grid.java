@@ -39,23 +39,31 @@ public class Grid{
   }
   
   public void newGen(){  //new generation
+    String[][] temp = new String[20][20];
    generation++;
    for(int r=0;r<grid.length;r++){
      for(int c=0;c<grid[0].length;c++){
        if(grid[r][c].equals(" X")){   //if cell is ALIVE   
          int count = getNeighbors(r,c);
          if(count<2||count>3){
-         grid[r][c]=" _";
+         temp[r][c]=" _";
+         } else {
+         temp[r][c] = " X";
          }
        }else{  //if cell is empty
          int count = getNeighbors(r,c);
          neighbors.add(count);
     //     if(r==1&&c==5)System.out.println(count);
-         if(count==3)
-           grid[r][c]=" X"; //cell is alive if there are 3 neighbors
-         }
+         if(count==3){
+           temp[r][c]=" X"; //cell is alive if there are 3 neighbors
+       }else{
+       temp[r][c]=" _";
+       }
        }
      }
+   }
+   grid = temp;
+   temp = new String[20][20];
    }
   
   
@@ -210,12 +218,7 @@ public class Grid{
   run.printGrid();
   run.newGen();
  run.printGrid();
-  run.newGen();
- run.printGrid();
- run.newGen();
- run.printGrid();
- run.newGen();
- run.printGrid();
+
  
   }
 }
